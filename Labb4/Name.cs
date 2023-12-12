@@ -8,5 +8,9 @@ namespace Labb4
 {
     public struct Name
     {
+        public string FirstName;
+        public string LastName;
+
+
     }
 }

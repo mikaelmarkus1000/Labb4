@@ -8,5 +8,11 @@ namespace Labb4
 {
     public struct Hair
     {
+        public string HairColour;
+        public int HairLength; // In centimeters
+  
+
+
+
     }
 }

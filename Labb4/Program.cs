@@ -77,14 +77,21 @@ namespace Labb4
 
                 // Failed to parse the gender
                 
-                Console.WriteLine("Invalid gender input.");
+                Console.WriteLine("Invalid gender input. Valid inputs are Male,Female,NonBinary and Other.");
                 return;
             }
             Name name = new Name();
-
-            Console.WriteLine("Okay! and what the first name?: ");
-            name.FirstName = Console.ReadLine();
-            Console.WriteLine("Thanks! and what is the last name?: ");
+            try
+            {
+                Console.WriteLine("What is the first name of the person you wish to Input?:");
+                name.FirstName = Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
+            Console.WriteLine("What is the last name of the person you wish to Input?: ");
             name.LastName = Console.ReadLine();
 
             Console.WriteLine($"Entered name: {name.FirstName} {name.LastName}  ");
@@ -92,15 +99,39 @@ namespace Labb4
 
             Hair hair = new Hair();
 
-            Console.WriteLine("Okay! what colour is the hair?: ");
+            Console.WriteLine("Enter person hair colour: ");
             hair.HairColour = Console.ReadLine();
-            Console.WriteLine("Thanks! how long (in cm) is the hair?:  ");
-            hair.HairLength = int.Parse(Console.ReadLine());
+            
+            
+             try
+            {
+                Console.WriteLine("Thanks! how long (in cm) is the hair?:  ");
+                hair.HairLength = int.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Invalid hair length input. Valid inputs are numbers.");
+                return;
+            }
+
+
+
             Console.WriteLine($"Entered Hair: {hair.HairColour} {hair.HairLength} cm");
             DateTime birthday = new DateTime();
-            Console.WriteLine("Okay! what is the birthday? Enter as dd,MM,yyyy : ");
-            birthday = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine($"Entered birthday: {birthday:dd,MM,yyyy}");
+            try
+            {
+                Console.WriteLine("Okay! what is the birthday? Enter as dd,MM,yyyy : ");
+                birthday = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine($"Entered birthday: {birthday:dd,MM,yyyy}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                
+                return;
+            }
+
             Console.WriteLine("Okay! what is the eye colour?: ");
             string eyeColour = Console.ReadLine();
             Console.WriteLine($"Entered eye colour: {eyeColour}");

@@ -12,7 +12,7 @@ namespace Labb4
         {
 
             List<Person> personList = new List<Person>();
-            //Skapa lista
+          // Blank list
                 
 
 
@@ -20,7 +20,7 @@ namespace Labb4
 
             while (true)
             {
-                // Att göra lägg till exeption handling till detta
+                // Prints out the menu in a forever while loop
                 Console.WriteLine("Meny");
                 Console.WriteLine("1. Add Person");
                 Console.WriteLine("2. Print Saved People");
@@ -45,13 +45,14 @@ namespace Labb4
                             Console.WriteLine(person);
                         }
 
-                        // For each Looop that prints out the list of people.
+                        // For each Looop that prints out the list of people
 
                         break;
 
                         case "3":
                         Console.WriteLine("Exiting...");
-                        return;
+                        Environment.Exit(0);
+                        // Exits the program
                         break;
                     
                     // Default case for when the user inputs something other than 1-3
@@ -74,15 +75,17 @@ namespace Labb4
 
             Gender gender = new Gender();
             Console.Write("Enter a gender (Male, Female, NonBinary, Other): ");
+            
+            
             if (Enum.TryParse(Console.ReadLine(), true, out gender))
             {
-                
+                // A tryParse, if it can parase the gender it will print out the gender the user selected. 
                 Console.WriteLine($"Inputed gender: {gender}");
             }
             else
             {
 
-                // Failed to parse the gender
+                // This happens if it fails to parse the gender.
                 
                 Console.WriteLine("Invalid gender input. Valid inputs are Male,Female,NonBinary and Other.");
                 return;
@@ -119,6 +122,7 @@ namespace Labb4
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Invalid hair length input. Valid inputs are numbers.");
+                return;
                 
             }
 
@@ -143,6 +147,8 @@ namespace Labb4
             string eyeColour = Console.ReadLine();
             Console.WriteLine($"Entered eye colour: {eyeColour}");
             
+            
+            // Creates a new person object and adds it to the list
            Person person = new Person(gender, hair, birthday, eyeColour, name);
             personList.Add(person);
             Console.WriteLine("Person added!");

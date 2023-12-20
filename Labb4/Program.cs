@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -11,7 +12,7 @@ namespace Labb4
         {
 
             List<Person> personList = new List<Person>();
-            
+            //Skapa lista
                 
 
 
@@ -30,10 +31,10 @@ namespace Labb4
 
                 switch (choice)
                 {
-
+                    
                     case "1":
                         addPerson(personList);
-
+                        // Calls the addPerson method
 
                         break;
 
@@ -43,14 +44,20 @@ namespace Labb4
                         {
                             Console.WriteLine(person);
                         }
+
+                        // For each Looop that prints out the list of people.
+
                         break;
 
                         case "3":
                         Console.WriteLine("Exiting...");
-                        Environment.Exit(0);
+                        return;
                         break;
-
-
+                    
+                    // Default case for when the user inputs something other than 1-3
+                    default: 
+                        Console.WriteLine("Wrong Input! Choose between 1 - 3");
+                        break;
 
                 }
 
@@ -105,14 +112,14 @@ namespace Labb4
             
              try
             {
-                Console.WriteLine("Thanks! how long (in cm) is the hair?:  ");
+                Console.WriteLine("Enter persons hair length:  ");
                 hair.HairLength = int.Parse(Console.ReadLine());
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Invalid hair length input. Valid inputs are numbers.");
-                return;
+                
             }
 
 
@@ -128,7 +135,7 @@ namespace Labb4
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                
+                Console.WriteLine("Invalid birthday input. Enter birthday as dd,MM,yyyy");
                 return;
             }
 
@@ -137,7 +144,7 @@ namespace Labb4
             Console.WriteLine($"Entered eye colour: {eyeColour}");
             
            Person person = new Person(gender, hair, birthday, eyeColour, name);
-                       personList.Add(person);
+            personList.Add(person);
             Console.WriteLine("Person added!");
             
 
